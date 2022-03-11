@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Pulsar.Client.Api;
-using Pulsar.Client.Common;
 
 namespace Pulsar.ClientTest.Controllers;
 
@@ -20,7 +19,7 @@ public class ProducerController : ControllerBase
     [HttpGet(Name = "Publish")]
     public async Task<long> Publish()
     {
-        var result=await _pulsarProducer.SendAsync("Hello World");
+        var result=await _pulsarProducer.SendAsync("Hello World from Pulsar.Client");
 
         return result.LedgerId;
     }

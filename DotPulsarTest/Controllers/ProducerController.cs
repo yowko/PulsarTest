@@ -20,7 +20,7 @@ public class ProducerController : ControllerBase
     [HttpGet(Name = "Publish")]
     public async Task<MessageId> Publish()
     {
-        var data = "Hello World";
+        var data = "Hello World from DotPulsar";
         return await _pulsarProducer.Send(new MessageMetadata(),data);
     }
 }
