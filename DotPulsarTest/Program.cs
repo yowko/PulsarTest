@@ -5,7 +5,7 @@ using PulsarTest;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddHostedService<ConsumerBuilderService>();
+//builder.Services.AddHostedService<ConsumerBuilderService>();
 //builder.Services.AddHostedService<ConsumerWithoutBuilderService>();
 builder.Services.AddControllers();
 
@@ -25,6 +25,8 @@ builder.Services.AddSingleton(_ =>pulsarClient.NewProducer(Schema.String)
     .Topic("persistent://public/default/yowkotest")
     .Create());
 
+//builder.Services.AddHostedService<ReaderBuilderService>();
+builder.Services.AddHostedService<ReaderWithoutBuilderService>();
 // builder.Services.AddSingleton(_ =>
 // {
 //     var options = new ProducerOptions<string>("persistent://public/default/yowkotest",Schema.String);

@@ -5,7 +5,7 @@ using Pulsar.ClientTest;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddHostedService<ConsumerService>();
+//builder.Services.AddHostedService<ConsumerService>();
 builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -25,6 +25,8 @@ builder.Services.AddSingleton( _ =>  client
     .NewProducer(Schema.STRING(Encoding.UTF8))
     .Topic(topicName)
     .CreateAsync().Result);
+
+builder.Services.AddHostedService<ReaderService>();
 
 var app = builder.Build();
 
